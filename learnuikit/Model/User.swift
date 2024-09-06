@@ -20,4 +20,5 @@ struct User: Codable {
     var followers: Int
     var following: Int
     var createdAt: String
+    var htmlUrl: String
 }

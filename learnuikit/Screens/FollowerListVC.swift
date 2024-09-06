@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FollowerListVCDelegate: AnyObject {
+    func reload(for username: String)
+}
+
 class FollowerListVC: UIViewController {
     
     enum Section { case main }
@@ -19,6 +23,8 @@ class FollowerListVC: UIViewController {
     var isSearching = false
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    
+    var delegate: SearchVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +62,7 @@ class FollowerListVC: UIViewController {
     }
     
     func getFollowers(username: String, page: Int) {
+        delegate.resetSearchText()
         showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
@@ -116,6 +123,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         
         //Modal bottom sheet
         let destinationVC = UserInfoVC()
+        destinationVC.delegate = self
         destinationVC.follower = follower
         let navController = UINavigationController(rootViewController: destinationVC)
         present(navController, animated: true)
@@ -133,6 +141,19 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching.toggle()
         self.updateData(from: followers)
+    }
+}
+
+extension FollowerListVC: FollowerListVCDelegate {
+    func reload(for username: String) {
+        self.username = username
+        self.title = username
+        followers = []
+        filterFollowers = []
+        page = 1
+        hasMore = true
+        isSearching = false
+        getFollowers(username: username, page: page)
     }
 }
 

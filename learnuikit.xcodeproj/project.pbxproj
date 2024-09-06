@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		836136602C884AFD00B10F47 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8361365F2C884AFD00B10F47 /* String+Ext.swift */; };
 		83964E3F2C328ACC0025CF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83964E3E2C328ACC0025CF11 /* AppDelegate.swift */; };
 		83964E412C328ACC0025CF11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83964E402C328ACC0025CF11 /* SceneDelegate.swift */; };
 		83964E482C328ACD0025CF11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83964E472C328ACD0025CF11 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8361365F2C884AFD00B10F47 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		83964E3B2C328ACC0025CF11 /* learnuikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learnuikit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83964E3E2C328ACC0025CF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83964E402C328ACC0025CF11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				83B94A412C7433E000248762 /* UIViewController+Ext.swift */,
+				8361365F2C884AFD00B10F47 /* String+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				83B94A662C7C796400248762 /* GFSecondaryTitleLabel.swift in Sources */,
 				83B94A402C7350C300248762 /* GFAlertVC.swift in Sources */,
 				83B94A4E2C7453A100248762 /* NetworkManager.swift in Sources */,
+				836136602C884AFD00B10F47 /* String+Ext.swift in Sources */,
 				83B94A3E2C734FC900248762 /* GFBodyLabel.swift in Sources */,
 				83B94A3C2C734AE200248762 /* GFTitleLabel.swift in Sources */,
 				83964E412C328ACC0025CF11 /* SceneDelegate.swift in Sources */,

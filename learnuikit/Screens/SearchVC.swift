@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SearchVCDelegate: AnyObject {
+    func resetSearchText()
+}
+
 class SearchVC: UIViewController {
     
     let logoImgView = UIImageView()
@@ -45,6 +49,7 @@ class SearchVC: UIViewController {
         let followerListVC = FollowerListVC()
         followerListVC.username = usernameTextField.text
         followerListVC.title = usernameTextField.text
+        followerListVC.delegate = self
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
@@ -90,5 +95,11 @@ extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
         return true
+    }
+}
+
+extension SearchVC: SearchVCDelegate {
+    func resetSearchText() {
+        usernameTextField.text = ""
     }
 }
