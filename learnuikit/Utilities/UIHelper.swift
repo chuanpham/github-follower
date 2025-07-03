@@ -20,7 +20,8 @@ struct UIHelper {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
-        
+        flowLayout.footerReferenceSize = CGSize(width: view.bounds.width, height: 50)
+
         return flowLayout
     }
 }
