@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830FE9802E17BBB200736755 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830FE97F2E17BBB200736755 /* Favorite.swift */; };
+		830FE9822E17BC8D00736755 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830FE9812E17BC8D00736755 /* PersistenceManager.swift */; };
 		836136602C884AFD00B10F47 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8361365F2C884AFD00B10F47 /* String+Ext.swift */; };
 		83964E3F2C328ACC0025CF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83964E3E2C328ACC0025CF11 /* AppDelegate.swift */; };
 		83964E412C328ACC0025CF11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83964E402C328ACC0025CF11 /* SceneDelegate.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		830FE97F2E17BBB200736755 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		830FE9812E17BC8D00736755 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		8361365F2C884AFD00B10F47 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		83964E3B2C328ACC0025CF11 /* learnuikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learnuikit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83964E3E2C328ACC0025CF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				83B94A482C744B1300248762 /* Follower.swift */,
 				83B94A4A2C744D7300248762 /* User.swift */,
+				830FE97F2E17BBB200736755 /* Favorite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				83B94A4D2C7453A100248762 /* NetworkManager.swift */,
+				830FE9812E17BC8D00736755 /* PersistenceManager.swift */,
 			);
 			name = Managers;
 			path = "Mânger";
@@ -325,6 +331,7 @@
 				83B94A602C774A4700248762 /* GFEmptyState.swift in Sources */,
 				83B94A4B2C744D7300248762 /* User.swift in Sources */,
 				83B94A382C6F551C00248762 /* GFTextField.swift in Sources */,
+				830FE9802E17BBB200736755 /* Favorite.swift in Sources */,
 				83B94A322C6F4C3700248762 /* SearchVC.swift in Sources */,
 				83B94A362C6F51C700248762 /* GFButton.swift in Sources */,
 				83B94A422C7433E000248762 /* UIViewController+Ext.swift in Sources */,
@@ -342,6 +349,7 @@
 				83B94A512C747BC200248762 /* ErrorMessages.swift in Sources */,
 				83B94A492C744B1300248762 /* Follower.swift in Sources */,
 				83B94A662C7C796400248762 /* GFSecondaryTitleLabel.swift in Sources */,
+				830FE9822E17BC8D00736755 /* PersistenceManager.swift in Sources */,
 				83B94A402C7350C300248762 /* GFAlertVC.swift in Sources */,
 				83B94A4E2C7453A100248762 /* NetworkManager.swift in Sources */,
 				836136602C884AFD00B10F47 /* String+Ext.swift in Sources */,

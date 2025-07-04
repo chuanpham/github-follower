@@ -10,7 +10,7 @@ import UIKit
 
 struct UIHelper {
     
-    static func createFlowLayout(in view: UIView) -> UICollectionViewFlowLayout {
+    static func createFlowLayout(in view: UIView, hasFooter: Bool = false) -> UICollectionViewFlowLayout {
         let width = view.bounds.width
         let padding: CGFloat = 12
         let minimumItemSpacing: CGFloat = 10
@@ -20,8 +20,11 @@ struct UIHelper {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
-        flowLayout.footerReferenceSize = CGSize(width: view.bounds.width, height: 50)
-
+        
+        if hasFooter { // for bottom loading indicator
+            flowLayout.footerReferenceSize = CGSize(width: view.bounds.width, height: 50)
+        }
+        
         return flowLayout
     }
 }
