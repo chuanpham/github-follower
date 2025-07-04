@@ -16,16 +16,19 @@ protocol UserInfoVCDelegate: AnyObject {
 class UserInfoVC: UIViewController {
     
     var follower: Follower!
+    var isFavorite: Bool!
     
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    let favoriteButton = GFButton(backgroundColor: .systemGreen, title: "Add To Favorite")
     var itemViews: [UIView] = []
     let dateLabel = GFBodyLabel(textAlignment: .center)
     
     var delegate: FollowerListVCDelegate!
+    weak var favoritesDelegate: FavoritesDelegate?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configViewController()
@@ -72,10 +75,40 @@ class UserInfoVC: UIViewController {
         self.add(childVC: repoItemVC, to: self.itemViewOne)
         self.add(childVC: followerItemVC, to: self.itemViewTwo)
         self.dateLabel.text = "GitHub since \(user.createdAt.convertToDate())"
+        
+        favoriteButton.set(backgroundColor: isFavorite ? .systemRed: .systemBlue, title: isFavorite ? "Unfavorite" : "Favorite")
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func favoriteButtonTapped() {
+        let actionType: PersistenceActionType = isFavorite ? .remove : .add
+        
+        PersistenceManager.updateWith(favorite: follower, actionType: actionType) { [weak self] error in
+            guard let self = self else { return }
+            
+            if let error {
+                self.presentGFAlertOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "OK")
+                return
+            }
+            
+            if actionType == .add {
+                isFavorite = true
+            } else {
+                isFavorite = false
+            }
+            
+            self.favoritesDelegate?.didUpdateFavoriteStatus(for: self.follower)
+            
+            updateFavoriteButton(isFavorite: isFavorite)
+        }
+    }
+    
+    func updateFavoriteButton(isFavorite: Bool) {
+        favoriteButton.set(backgroundColor: isFavorite ? .systemRed: .systemBlue, title: isFavorite ? "Unfavorite" : "Favorite")
     }
     
     func layoutUI() {
-        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
+        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel, favoriteButton]
         
         for itemView in itemViews {
             view.addSubview(itemView)
@@ -104,6 +137,10 @@ class UserInfoVC: UIViewController {
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            
+            favoriteButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding),
+            favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            favoriteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
         ])
     }
     

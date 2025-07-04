@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FavoritesDelegate: AnyObject {
+    func didUpdateFavoriteStatus(for follower: Follower)
+}
+
 class FavoritesListVC: UIViewController {
     
     enum Section { case main }

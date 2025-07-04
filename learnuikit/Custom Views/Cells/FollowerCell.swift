@@ -34,7 +34,7 @@ class FollowerCell: UICollectionViewCell {
     
     func updateFavoriteButton(isFavorite: Bool) {
         let heartImageName = isFavorite ? "heart.fill" : "heart"
-        let heartColor = isFavorite ? UIColor.systemRed : UIColor.systemGray2
+        let heartColor = isFavorite ? UIColor.systemRed : UIColor.systemRed
         let config = UIImage.SymbolConfiguration(pointSize: 24)
         
         favoriteButton.setImage(UIImage(systemName: heartImageName, withConfiguration: config), for: .normal)

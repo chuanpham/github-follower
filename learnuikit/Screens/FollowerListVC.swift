@@ -213,10 +213,39 @@ extension FollowerListVC: UICollectionViewDelegate {
         
         // Modal bottom sheet
         let destinationVC = UserInfoVC()
+        destinationVC.favoritesDelegate = self
         destinationVC.delegate = self
         destinationVC.follower = follower
+        destinationVC.isFavorite = favorites.contains(follower) ? true : false
+        
         let navController = UINavigationController(rootViewController: destinationVC)
         present(navController, animated: true)
+    }
+}
+
+extension FollowerListVC: FavoritesDelegate {
+    func didUpdateFavoriteStatus(for follower: Follower) {
+        // First, update local 'favorites' array to match the change.
+        if favorites.contains(follower) {
+            favorites.removeAll { $0.login == follower.login }
+        } else {
+            favorites.append(follower)
+        }
+        
+        // Now, find the follower in your main data source array.
+        let activeArray = isSearching ? filterFollowers : followers
+        guard let index = activeArray.firstIndex(of: follower) else { return }
+        
+        // Get the currently displayed data snapshot.
+        var snapshot = dataSource.snapshot()
+        
+        // Reconfigure the specific item at its index path. This tells the
+        // data source to re-run the cell configuration block for just this item,
+        // updating its heart icon without reloading the whole list.
+        if snapshot.itemIdentifiers.contains(follower) {
+            snapshot.reconfigureItems([follower])
+            dataSource.apply(snapshot, animatingDifferences: true)
+        }
     }
 }
 
